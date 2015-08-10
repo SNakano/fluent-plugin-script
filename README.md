@@ -2,6 +2,8 @@
 
 Fluent filter plugin to external ruby script
 
+[![Build Status](https://travis-ci.org/SNakano/fluent-plugin-script.svg)](https://travis-ci.org/SNakano/fluent-plugin-script)
+
 ## install
 
 ``
