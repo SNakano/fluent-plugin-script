@@ -1,6 +1,6 @@
 # fluent-plugin-script
 
-Fluent filter plugin to external ruby script
+Fluent filter plugin to external ruby script.
 
 [![Build Status](https://travis-ci.org/SNakano/fluent-plugin-script.svg)](https://travis-ci.org/SNakano/fluent-plugin-script)
 
@@ -10,7 +10,7 @@ Fluent filter plugin to external ruby script
 gem install fluent-plugin-filter-script
 ``
 
-## Configuration Example
+## Configuration
 
 #### fluent.conf
 ```
@@ -19,6 +19,32 @@ gem install fluent-plugin-filter-script
   path /etc/fluentd/example.rb
 </filter>
 ```
+
+#### external ruby script
+
+```
+def start
+  super
+  # This is the first method to be called when it starts running
+  # Use it to allocate resources, etc.  
+end
+
+def shutdown
+  super
+  # This method is called when Fluentd is shutting down.
+  # Use it to free up resources, etc.
+end
+
+def filter(tag, time, record)
+  # This method implements the filtering logic for individual filters
+  record
+end
+
+```
+
+ref. http://docs.fluentd.org/articles/plugin-development#filter-plugins
+
+## Example
 
 #### example.rb
 
