@@ -5,6 +5,7 @@ module Fluent
     config_param :path, :string
 
     def configure(conf)
+      super
       load_script_file(conf['path'].to_s)
     end
 
