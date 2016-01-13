@@ -3,7 +3,7 @@
 Fluent filter plugin to external ruby script.
 
 [![Build Status](https://travis-ci.org/SNakano/fluent-plugin-script.svg)](https://travis-ci.org/SNakano/fluent-plugin-script)
-[![Gem](https://img.shields.io/gem/dt/fluent-plugin-script.svg)]()
+[![Gem](https://img.shields.io/gem/dt/fluent-plugin-script.svg)](https://rubygems.org/gems/fluent-plugin-script)
 
 ## install
 
