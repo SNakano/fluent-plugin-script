@@ -1,6 +1,8 @@
-module Fluent
+require 'fluent/plugin/filter'
+
+module Fluent::Plugin
   class ScriptFilter < Filter
-    Plugin.register_filter('script', self)
+    Fluent::Plugin.register_filter('script', self)
 
     config_param :path, :string
 
@@ -10,9 +12,12 @@ module Fluent
     end
 
     def load_script_file(path)
-      raise ConfigError, "Ruby script file does not exist: #{path}" unless File.exist?(path)
+      raise Fluent::ConfigError, "Ruby script file does not exist: #{path}" unless File.exist?(path)
       eval "self.instance_eval do;" + IO.read(path) + ";end"
+    end
+
+    def filter(tag, time, record)
+      # Overwritten by evaluated script.
     end
   end
 end
-

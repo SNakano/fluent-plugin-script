@@ -1,6 +1,7 @@
 require 'test/unit'
 require 'fluent/log'
 require 'fluent/test'
+require 'fluent/test/driver/filter'
 require 'fluent/plugin/filter_script'
 
 class RubyFilterTest < Test::Unit::TestCase
@@ -11,7 +12,7 @@ class RubyFilterTest < Test::Unit::TestCase
   end
 
   def create_driver(conf = '')
-    Test::FilterTestDriver.new(ScriptFilter).configure(conf, true)
+    Test::Driver::Filter.new(Plugin::ScriptFilter).configure(conf)
   end
 
   sub_test_case 'configure' do
@@ -32,9 +33,10 @@ class RubyFilterTest < Test::Unit::TestCase
   sub_test_case 'filter' do
     def emit(conf, msg)
       d = create_driver(conf)
-      d.run {
-        d.emit({'foo' => 'bar', 'message' => msg}, Fluent::Engine.now)
-      }.filtered
+      d.run(default_tag: 'test') {
+        d.feed(Fluent::Engine.now, {'foo' => 'bar', 'message' => msg})
+      }
+      d.filtered
     end
     test 'execute filter' do
       conf = "path #{__dir__}/example.rb"
