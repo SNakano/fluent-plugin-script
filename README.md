@@ -11,6 +11,13 @@ Fluent filter plugin to external ruby script.
 gem install fluent-plugin-filter-script
 ``
 
+### Requirements
+
+| fluent-plugin-script | fluentd    |
+|----------------------|------------|
+| >= 0.1.0             | >= v0.14.0 |
+| <  0.0.4             | <  v0.14.0 |
+
 ## Configuration
 
 #### fluent.conf
@@ -27,7 +34,7 @@ gem install fluent-plugin-filter-script
 def start
   super
   # This is the first method to be called when it starts running
-  # Use it to allocate resources, etc.  
+  # Use it to allocate resources, etc.
 end
 
 def shutdown
