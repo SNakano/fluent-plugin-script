@@ -11,7 +11,7 @@ module Fluent
 
     def load_script_file(path)
       raise ConfigError, "Ruby script file does not exist: #{path}" unless File.exist?(path)
-      eval "self.instance_eval do;" + IO.read(path) + ";end"
+      eval "self.instance_eval do;" + IO.read(path) + ";\nend"
     end
   end
 end
