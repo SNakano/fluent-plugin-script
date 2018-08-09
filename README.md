@@ -8,7 +8,7 @@ Fluent filter plugin to external ruby script.
 ## install
 
 ``
-gem install fluent-plugin-filter-script
+gem install fluent-plugin-script
 ``
 
 ### Requirements
