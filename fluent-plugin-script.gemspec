@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "fluent-plugin-script"
-  s.version       = "0.1.1"
+  s.version       = "0.2.0"
   s.licenses      = ["MIT"]
   s.summary       = "Fluentd filter plugin to external ruby script"
   s.description   = s.summary
