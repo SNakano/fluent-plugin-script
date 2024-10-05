@@ -52,6 +52,21 @@ end
 
 ref. http://docs.fluentd.org/articles/plugin-development#filter-plugins
 
+#### Setting default directory
+
+By setting the `FLUENT_PLUGIN_SCRIPT_DIR` environment variable, you can specify the default directory where scripts are located and access them without specifying the full path.
+
+```bash
+FLUENT_PLUGIN_SCRIPT_DIR="/etc/fluentd/"
+```
+
+```
+<filter foo.bar.*>
+  type script
+  path example.rb
+</filter>
+```
+
 ## Example
 
 #### example.rb

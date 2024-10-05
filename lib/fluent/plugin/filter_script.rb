@@ -12,6 +12,7 @@ module Fluent::Plugin
     end
 
     def load_script_file(path)
+      path = "#{ENV['FLUENT_PLUGIN_SCRIPT_DIR']}/#{path}" if path[0] != '/' && ENV['FLUENT_PLUGIN_SCRIPT_DIR']
       raise Fluent::ConfigError, "Ruby script file does not exist: #{path}" unless File.exist?(path)
       eval "self.instance_eval do;" + IO.read(path) + ";\nend"
     end

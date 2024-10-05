@@ -28,6 +28,11 @@ class RubyFilterTest < Test::Unit::TestCase
       conf = "path #{__dir__}/example.rb"
       assert_nothing_raised { create_driver(conf) }
     end
+    test 'file exist with FLUENT_PLUGIN_SCRIPT_DIR' do
+      ENV['FLUENT_PLUGIN_SCRIPT_DIR'] = __dir__
+      conf = 'path example.rb'
+      assert_nothing_raised { create_driver(conf) }
+    end
   end
 
   sub_test_case 'filter' do
